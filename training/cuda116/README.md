@@ -1,0 +1,1 @@
+This is a special docker image prepared for VMs with older NVIDIA driver. This could happen when you use managed GPU drivers from GKE.

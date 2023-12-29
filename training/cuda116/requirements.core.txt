@@ -1,0 +1,8 @@
+ray[data,train,tune,serve]==2.9.0
+deepspeed==0.11.2
+transformers==4.36.2
+dm-tree==0.1.8
+accelerate==0.25.0
+datasets==2.16.0
+peft==0.7.1
+flash-attn==1.0.5
