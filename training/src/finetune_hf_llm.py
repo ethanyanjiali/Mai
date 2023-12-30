@@ -683,6 +683,12 @@ def parse_args():
         help="the key to extract data from each JSON entry",
     )
 
+    parser.add_argument(
+        "--conda_env",
+        type=str,
+        help="conda env name for Ray to activate",
+    )
+
     args = parser.parse_args()
 
     return args
@@ -691,7 +697,8 @@ def parse_args():
 def main():
     args = parse_args()
 
-    hf_login(os.environ["HF_TOKEN"])
+    if "HF_TOKEN" in os.environ:
+        hf_login(os.environ["HF_TOKEN"])    
 
     # update the config with args so that we have access to them.
     config = vars(args)
@@ -726,8 +733,10 @@ def main():
             "env_vars": {
                 "HF_HOME": "~/.cache/huggingface",
                 "RAY_AIR_LOCAL_CACHE_DIR": os.environ["RAY_AIR_LOCAL_CACHE_DIR"],
+                "RAY_CONDA_HOME": "/root/anaconda3",
             },
             "working_dir": ".",
+            "conda": args.conda_env,
         }
     )
 
